@@ -21,13 +21,11 @@ Machine B, on the other hand, was originally a Machinery Fault Simulator from Sp
 -	6 different accelerometer positions.
 -	A fixed load (force) of 0.15 kN. 
 -	5 different speeds: 240, 360, 480, 700, and 1020 RPM
-
-- Training/Validation/Test dataset for two motors can be downloaded from the given [link](https://drive.google.com/drive/folders/1glUH3mLPUowrwi-B0yrIWHWm_ZpNfnBN?usp=share_link)
-- Whole QU-DMBF dataset with user manual can be downloaded from the given [link](https://drive.google.com/drive/folders/1glUH3mLPUowrwi-B0yrIWHWm_ZpNfnBN?usp=share_link)
+- Full QU-DMBF dataset with user manual can be downloaded from the given [link](https://drive.google.com/drive/folders/1glUH3mLPUowrwi-B0yrIWHWm_ZpNfnBN?usp=share_link)
 ## Run
 
 #### Train
-- Download train, validation and test data to the "tmats/", "vmats/", and "temats/" folders folders respectively.
+- Training/Validation/Test dataset for two motors can be downloaded from the given [link](https://drive.google.com/drive/folders/1glUH3mLPUowrwi-B0yrIWHWm_ZpNfnBN?usp=share_link). Download train, validation and test data to the "tmats/", "vmats/", and "temats/" folders folders respectively. 
 - Start training (Stage-1)
 ```http
   python Op_GAN_train.py
