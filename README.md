@@ -32,7 +32,7 @@ Machine B, on the other hand, was originally a Machinery Fault Simulator from Sp
 ```http
   python Op_GAN_train.py
 ```
-- Faulty Data Synthesis. (Stage-2) You can download Pre-trained Network [weights](https://drive.google.com/drive/folders/1ezrWa6A69H5ccNV1y2hb_GuyLsmEk1ff?usp=sharing)
+- Faulty Data Synthesis (Stage-2). You can download Pre-trained Network [weights](https://drive.google.com/drive/folders/1ezrWa6A69H5ccNV1y2hb_GuyLsmEk1ff?usp=sharing)
 ```http
   python Op_GAN_test.py
 ```
