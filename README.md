@@ -36,9 +36,9 @@ Machine B, on the other hand, was originally a Machinery Fault Simulator from Sp
 ```http
   python Op_GAN_test.py
 ```
-- Save outputs to the "goutputs/" folder 
+- Save outputs to the "goutputs/" folder. 
 
-- Prepeare Training Data for classifier 
+- Prepeare Training Data for classifier. Save outputs to the "classifier/mats/" folder.  
 ```http
   data_prepeare.m
 ```
@@ -49,10 +49,6 @@ Machine B, on the other hand, was originally a Machinery Fault Simulator from Sp
 - Fault Detection (Stage-4) 
 ```http
   python Classifier_test.py
-```
-- Show outputs (Stage-4) 
-```http
-  python Visualize_Results.py
 ```
 
 ## Prerequisites
