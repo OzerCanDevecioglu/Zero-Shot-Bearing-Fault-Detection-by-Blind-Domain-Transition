@@ -31,7 +31,6 @@ import torchaudio
 from scipy.fft import fft, fftfreq, fftshift
 from torch_stoi import NegSTOILoss
 sample_rate = 16000
-loss_func = NegSTOILoss(sample_rate=sample_rate)
 spectrogram = torchaudio.transforms.Spectrogram(n_fft = 256 ,win_length=256 ,hop_length=128)
 
 data_dir = 'input/gan-getting-started'
@@ -45,11 +44,7 @@ dataloader = dm.train_dataloader()
 G = CycleGAN_Unet_Generator().cuda()
 D = CycleGAN_Discriminator().cuda()
 
-# Init Weight  --------------------------------------------------------------
-# for net in [G_basestyle, D_style]:
-#     init_weights(net, init_type='normal')
-    
-    
+
     
 num_epoch = 3000
 # lr=0.01
@@ -84,7 +79,6 @@ for e in range(1,num_epoch):
           # check beats
           plt.subplot(211)
           plt.plot(input_img[4,0,:].cpu().detach())
-          plt.title("Noisy Audio Signal/Clear Audio Signal")
           plt.subplot(212)
           plt.plot(real_img[4,0,:].cpu().detach())
         
@@ -105,7 +99,6 @@ for e in range(1,num_epoch):
       loss_g_dim = criterion_mae(rspre.log10(), ispre.log10()) # MSELoss
 
       
-      loss_batch = loss_func(torch.tensor(fake_img.cpu()), torch.tensor(input_img.cpu()))  
       
       loss_g = loss_g_bce + LAMBDA * loss_g_mae +LAMBDA *loss_g_dim
       
@@ -122,7 +115,7 @@ for e in range(1,num_epoch):
       loss_d_real = criterion_bce(out_real, real_label)
       out_fake = D(fake_img_)
       loss_d_fake = criterion_bce(out_fake, fake_label)
-      loss_d = loss_d_real + loss_d_fake +loss_batch.mean()
+      loss_d = loss_d_real + loss_d_fake 
       total_loss_d.append(loss_d.item())
       # loss_drg = Variable(loss_d.data, requires_grad=True)
 
@@ -138,7 +131,7 @@ for e in range(1,num_epoch):
     if e%10 == 0:
   
       # Sanity Check
-        data_dir = "vmatsm2t"
+        data_dir = "vmats"
         batch_size = 100    
         dm2 = TECGDataModule(data_dir, batch_size, phase='test')
         dm2.prepare_data()
