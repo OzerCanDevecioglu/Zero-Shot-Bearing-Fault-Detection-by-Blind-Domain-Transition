@@ -33,7 +33,7 @@ epnum=["10"]
 for a in epnum:
     print(a)
     G_basestyle = CycleGAN_Unet_Generator()
-    checkpoint =torch.load("weightsm2t/model_weights_"+str(a)+"_.pth")
+    checkpoint =torch.load("model_weights_430_MA.pth")
     
     G_basestyle.load_state_dict(checkpoint)
     
@@ -79,8 +79,8 @@ for a in epnum:
     ch1array=ch1array.values.reshape(len(ch1array)*4096,1)
     labelarray=labelsarray.reshape(len(labelsarray)*2,1)
     import scipy.io as sio
-    # sio.savemat('goutputs/ch1data_train_'+str(a)+'.mat', {'predicted':predicted.values})    
-    # sio.savemat('goutputs/ch1data_test_'+str(a)+'.mat', {'actual':actual.values}) 
+    sio.savemat('goutputs/ch1data_train_'+str(a)+'.mat', {'predicted':predicted.values})    
+    sio.savemat('goutputs/ch1data_test_'+str(a)+'.mat', {'actual':actual.values}) 
     # # sio.savemat('classifier_mats/ch1data_train_1.mat', {'ch1array':ch1array})    
     # # sio.savemat('classifier_mats/labels_train_1.mat', {'labelarray':labelarray})    
     

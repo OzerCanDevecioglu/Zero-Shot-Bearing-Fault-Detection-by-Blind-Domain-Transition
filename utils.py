@@ -50,7 +50,7 @@ class ECGDataset(Dataset):
 
     def normalize(self,x):
         for idx,data in enumerate(x):
-            # data =(data- data.mean(dim=-1).unsqueeze(-1))/data.std(dim=-1).unsqueeze(-1)
+            data =(data- data.mean(dim=-1).unsqueeze(-1))/data.std(dim=-1).unsqueeze(-1)
             data -= data.min(dim=-1)[0].unsqueeze(-1)
             data /= (data.max(-1)[0]-data.min(-1)[0]).unsqueeze(-1)
             # data2 = abs(data)
@@ -168,17 +168,17 @@ class TECGDataset(Dataset):
 
     def normalize(self,x):
         for idx,data in enumerate(x):
-            # data =(data- data.mean(dim=-1).unsqueeze(-1))/data.std(dim=-1).unsqueeze(-1)
-            # data -= data.min(dim=-1)[0].unsqueeze(-1)
-            # data /= (data.max(-1)[0]-data.min(-1)[0]).unsqueeze(-1)
-            data2 = abs(data)
-            data /= (data2.max(-1)[0]).unsqueeze(-1)
-            # data /= 0.2
-            with open('datamax.txt', 'a') as f:
-                f.write("\n"+"max : "+str(data2.max(-1)[0].numpy()))
+            data =(data- data.mean(dim=-1).unsqueeze(-1))/data.std(dim=-1).unsqueeze(-1)
+            data -= data.min(dim=-1)[0].unsqueeze(-1)
+            data /= (data.max(-1)[0]-data.min(-1)[0]).unsqueeze(-1)
+            # data2 = abs(data)
+            # data /= (data2.max(-1)[0]).unsqueeze(-1)
+            # # data /= 0.2
+            # with open('datamax.txt', 'a') as f:
+            #     f.write("\n"+"max : "+str(data2.max(-1)[0].numpy()))
             
-            # data *= 2
-            # data -= 1
+            data *= 2
+            data -= 1
             
             x[idx] = data
         return x
