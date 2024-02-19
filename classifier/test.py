@@ -13,7 +13,9 @@ from tqdm import tqdm
 from models import models
 from utils1 import ECGDataset,get_patient_ids,calc_accuracy
 from sklearn.metrics import classification_report,confusion_matrix
+patient_ids=["1"]
 
+q_range= [3]
 
 import pandas as pd
 mod_name="full"
@@ -72,4 +74,3 @@ data=pd.concat([acc,f12,f11],axis=1)
 import scipy.io as sio
 
 sio.savemat("data.mat", {'data':data.values})
-
